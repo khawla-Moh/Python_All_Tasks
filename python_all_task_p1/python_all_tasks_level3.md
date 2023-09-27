@@ -56,16 +56,143 @@
    Fahrenheit to Celcius and back, or inches to centimeters and back, etc in 3 dierent
    ways
 
-   ```
+   ```py
+   
+   
+   class  temperature_measuremen_converter:
+       def __init__(self):
+   
+           while True:
+                   
+               print(""" 
+                   temperature/measurement converter:
+                       1- convert Fahrenheit to Celcius
+                       2-convert Celcius to Fahrenheit
+                       3-convert inches to centimeters
+                       4-convert centimeters to inches
+                       5-Exit
+   
+                   """)
+               input_number=int(input("Choose number from above: "))
+   
+               if input_number ==1:
+                   f=int(input("Enter Fahrenheit : "))
+                   self.fahrenheit_to_celsius(f)
+                           
+   
+               elif input_number ==2:
+                   c=int(input("Enter Celsius : "))
+                   self.celsius_to_fahrenheit(c)     
+   
+               elif input_number ==3:
+                   i=int(input("Enter Inches : "))
+                   self.inches_to_centimeters(i)     
+               
+               elif input_number ==4:
+                   c=int(input("Enter Inches : "))
+                   self.centimeters_to_inches(c)      
+   
+               elif input_number==5:
+                   print("......")
+                   return
+               paly_again=input("""
+                                 enter any key to continue ... 
+                                 enter (e) to exit""")
+               if paly_again=='e':
+                   break
+               
+       def fahrenheit_to_celsius(self,f):
+           print( (f -32)* 5/9)
+   
+       def celsius_to_fahrenheit(self,c):
+           print( (c* 9/5)+32)
+   
+       def inches_to_centimeters(self,inches):
+           print(inches * 2.54)
+   
+       def centimeters_to_inches(self,centimeters):
+           print(centimeters / 2.54)
+   
+   
+   o=temperature_measuremen_converter()
    
    ```
-
    
-
    
-
    
-
+   ```py
+   import pint 
+   
+   class  temperature_measuremen_converter:
+       
+           
+       def __init__(self):
+   
+           self.ureg=pint.UnitRegistry()
+   
+   
+           while True:
+                   
+               print("""
+                   temperature/measurement converter:
+                       1- convert Fahrenheit to Celcius
+                       2-convert Celcius to Fahrenheit
+                       3-convert inches to centimeters
+                       4-convert centimeters to inches
+                       5-Exit
+   
+                   """)
+               input_number=int(input("Choose number from above: "))
+   
+               if input_number ==1:
+                   f=int(input("Enter Fahrenheit : "))
+                   self.fahrenheit_to_celsius(f)
+                           
+   
+               elif input_number ==2:
+                   c=int(input("Enter Celsius : "))
+                   self.celsius_to_fahrenheit(c)     
+   
+               elif input_number ==3:
+                   i=int(input("Enter Inches : "))
+                   self.inches_to_centimeters(i)     
+               
+               elif input_number ==4:
+                   c=int(input("Enter Inches : "))
+                   self.centimeters_to_inches(c)      
+   
+               elif input_number==5:
+                   print("......")
+                   return
+               paly_again=input("""
+                                 enter any key to continue .. 
+                                 enter (e) to exit""")
+               if paly_again=='e':
+                   break
+               
+       def fahrenheit_to_celsius(self,f):
+           print((f * self.ureg.degF).to(self.ureg.degC)) 
+   
+       def celsius_to_fahrenheit(self,c):
+            return (c*self.ureg.degC).to(self.ureg.degF)
+   
+   
+       def inches_to_centimeters(self,inches):
+           return (inches * self.ureg.inch).to(self.ureg.centimeter)
+           
+   
+       def centimeters_to_inches(self,centim):
+           return (centim * self.ureg.centimeter).to(self.ureg.inch)
+   
+   
+   o=temperature_measuremen_converter()
+   
+   
+   
+   ```
+   
+   
+   
 3. Build an email slicer : create a function that takes an email as input and retrieve the
    username and domain of the email
 
